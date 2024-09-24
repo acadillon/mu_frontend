@@ -116,13 +116,13 @@ const Slider = ({ images }) => {
               {image.attributes.mime.startsWith('video/') ? (
                 <div className={`video-wrap hover-effect ${hoverStates[index] ? 'hover-on' : 'hover-off'}`}>
                   <video id={`video-${index}`} playsInline muted loop>
-                    <source src={'https://mu-backend.onrender.com/' + image.attributes.url} type={image.attributes.mime} />
+                    <source src={'http://localhost:1337/' + image.attributes.url} type={image.attributes.mime} />
                   </video>
                   <div className="video-caption small-body">{image.attributes.caption}</div>
                 </div>
               ) : (
                 <figure className={`hover-effect ${hoverStates[index] ? 'hover-on' : 'hover-off'}`}>
-                  <img src={'https://mu-backend.onrender.com/' + image.attributes.url} alt={image.attributes.name} />
+                  <img src={'http://localhost:1337/' + image.attributes.url} alt={image.attributes.name} />
                   <figcaption className='small-body'>{image.attributes.caption}</figcaption>
                 </figure>
               )}

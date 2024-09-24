@@ -33,7 +33,7 @@ const App = () => {
   useEffect(() => {
     // Fetch des about
     axios
-      .get("https://mu-backend.onrender.com/api/abouts?populate=*")
+      .get("http://localhost:1337/api/abouts?populate=*")
       .then(({ data }) => {
         setAbouts(data.data);
       })

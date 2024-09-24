@@ -18,7 +18,7 @@ const Actus = ({ isActive, onClick }) => {
     useEffect(() => {
         // Fetch des actualites
         axios
-            .get("https://mu-backend.onrender.com//api/actualites?populate=*")
+            .get("http://localhost:1337/api/actualites?populate=*")
             .then(({ data }) => {
                 setActus(data.data);
             })

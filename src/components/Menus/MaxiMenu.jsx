@@ -19,7 +19,7 @@ const MaxiMenu = ({ }) => {
     useEffect(() => {
         // Fetch des projets ordonnés à partir du menu
         axios
-            .get("https://mu-backend.onrender.com//api/menu?populate[Works][populate]=Images")
+            .get("http://localhost:1337/api/menu?populate[Works][populate]=Images")
             .then(({ data }) => {
                 setMenulink(data.data.attributes.Works.data);
             })

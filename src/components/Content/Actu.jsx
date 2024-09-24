@@ -19,7 +19,7 @@ const Actu = ({ title, titleEN, body, bodyEN, link, linkText, image }) => {
         <div className={`actu-teaser`} onMouseEnter={() => actuEnterEffect()} onMouseLeave={() => actuLeaveEffect()}>
             {image && image.attributes && (
                 <div className={`actu-img hover-effect ${image && image.attributes ? 'w-img' : ''} ${actuHoverStates === true ? 'hover-on' : (actuHoverStates === false ? 'hover-off' : '')}`}>
-                    <img src={'http://localhost:1337' + image.attributes.formats.small.url} alt={image.attributes.name} />
+                    <img src={'https://mu-backend.onrender.com/' + image.attributes.formats.small.url} alt={image.attributes.name} />
                 </div>
 
             )}

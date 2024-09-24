@@ -24,7 +24,7 @@ const AaMenu = ({ isActive, onClick }) => {
     useEffect(() => {
         // Fetch des about
         axios
-            .get("http://localhost:1337/api/abouts")
+            .get("https://mu-backend.onrender.com/api/abouts")
             .then(({ data }) => {
                 setAbouts(data.data);
             })

@@ -1,0 +1,86 @@
+// ------------------------------------------------------------
+// HOVER image EFFECT
+// ------------------------------------------------------------
+
+@keyframes filterAnimationOn{
+    0%{filter: grayscale(1) contrast(0.3) brightness(1.5) invert(0);}
+    // 20%{filter: grayscale(1) contrast() brightness(0.4) invert(1);}
+    100%{filter: grayscale(0) contrast() brightness(1) invert(0);}
+}
+
+@keyframes filterAnimationOff{
+    0%{filter: grayscale(0) contrast() brightness(1) invert(0);}
+    100%{filter: grayscale(1) contrast(0.3) brightness(1.5) invert(0);}
+}
+
+@keyframes videoFilterAnimationOn{
+    0%{filter: grayscale(1) contrast(0.5) brightness(2) invert(0);}
+    // 20%{filter: grayscale(1) contrast() brightness(0.4) invert(1);}
+    100%{filter: grayscale(0) contrast() brightness(1) invert(0);}
+}
+
+@keyframes videoFilterAnimationOff{
+    0%{filter: grayscale(0) contrast() brightness(1) invert(0);}
+    100%{filter: grayscale(1) contrast(0.5) brightness(2) invert(0);}
+}
+
+@keyframes fadeInBody{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.hover-effect{
+    position: relative;
+    img{
+        filter: grayscale(1) contrast(0.3) brightness(1.5) invert(0);
+    }
+    video{
+        filter: grayscale(1) contrast(0.5) brightness(2) invert(0);
+    }
+    img, video{
+        cursor: pointer;
+    }
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 2px);
+        height: calc(100% - 10px);
+        z-index: 999;
+        opacity: 0.3;
+        mix-blend-mode: screen;
+        filter: invert(1);
+        background-image: url(https://img.freepik.com/premium-vector/seamless-stippled-texture-noise-repeated-pattern-dots-grain-repeating-background-particles-drops_497399-737.jpg);
+    }
+}
+
+.hover-effect.hover-on{
+    img{
+        animation: filterAnimationOn 0.8s ease-in-out forwards;
+    }
+    video{
+        animation: videoFilterAnimationOn 0.8s ease-in-out forwards;
+    }
+    &::after{
+        opacity: 0;
+    }
+}
+.hover-effect.hover-off{
+    img{
+        animation: filterAnimationOff 0.5s ease-in-out forwards;
+    }
+    video{
+        animation: videoFilterAnimationOff 0.5s ease-in-out forwards;
+    }
+    &::after{
+        transition: opacity 0.3s 0.3s;
+        opacity: 0.55;
+    }
+}
+
+body{
+    opacity: 0;
+    animation: fadeInBody 1s ease 0.3s forwards;
+}

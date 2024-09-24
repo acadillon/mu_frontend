@@ -1,0 +1,171 @@
+/* // ------------------------------------------------------------
+// INDEX
+// ------------------------------------------------------------ */
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: white;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* // ** Queries */
+body {
+  --md: 768px;
+}
+
+img {
+  display: block;
+}
+
+
+#root {
+  display: grid;
+  height: 100dvh;
+}
+
+#bottom-menu--wrapper {
+  align-self: end;
+}
+
+
+/* // ** Fonts */
+@font-face {
+  font-family: 'Piek';
+  src: url('assets/fonts/Piek-Regular/Piek-Regular.woff2') format('woff2'),
+    url('assets/fonts/Piek-Regular/Piek-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Necto';
+  src: url('assets/fonts/nectoMono/Necto-Mono.woff2') format('woff2'),
+    url('assets/fonts/nectoMono/Necto-Mono.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.title-big-body {
+  font-family: "Piek";
+  font-size: 30px;
+  line-height: 1.25em;
+}
+
+@media (max-width: 830px) {
+  .title-big-body {
+    font-size: 25px !important;
+  }
+}
+
+.header-body,
+.body-p,  
+.poem-wrapper {
+  font-family: "Piek";
+  font-size: 19px;
+  line-height: 1.25em;
+}
+
+@media (max-width: 830px) {
+
+  .header-body,
+  .poem-wrapper {
+    font-size: 15px !important;
+  }
+}
+
+.small-body {
+  font-family: 'Necto';
+  font-size: 12px;
+  line-height: 1.25em;
+}
+
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  font-family: 'Piek';
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  font-family: 'Piek';
+  font-size: 30px;
+  line-height: 1.25em;
+}
+
+@media (max-width: 830px) {
+  h2 {
+    font-size: 25px !important;
+  }
+}
+
+button {
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 0px;
+  color: black;
+  font-family: 'Piek';
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+@media (max-width: 830px) {
+  button {
+    font-size: 15px !important;
+  }
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 0px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: black;
+    background-color: white;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+}

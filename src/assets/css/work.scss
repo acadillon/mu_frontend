@@ -1,0 +1,49 @@
+// ------------------------------------------------------------
+// WORK
+// ------------------------------------------------------------
+
+.poem-wrapper {
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+    .poem-wrapper {
+
+        p,
+        span {
+            margin-left: 0px !important;
+        }
+    }
+}
+
+.work {
+    .desc-p {
+        max-width: 700px;
+    }
+    .accordeon-content > .body-p:first-child{
+        margin-top: 1rem;
+    }
+    p {
+        margin: 0px;
+    }
+
+
+    .answer-container{
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease;
+        .accordeon-content{
+            overflow: hidden;
+        }
+        &.active{
+            grid-template-rows: 1fr;
+            margin-bottom: 50px;
+        }
+    }
+}
+.credit{
+    margin: 10px 20px;
+    a{
+        text-decoration: underline;
+    }
+}

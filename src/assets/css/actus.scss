@@ -1,0 +1,59 @@
+// ------------------------------------------------------------
+// ACTUS
+// ------------------------------------------------------------
+
+.actus-cat--wrapper {
+    margin-top: 25px;
+}
+
+.actu-teaser {
+    margin: 0px 20px;
+    @media (max-width: 830px) { 
+        margin: 0px 15px;
+    }
+    
+    .actu-ttl--wrap {
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    h3 {
+        margin: 0;
+    }
+
+    a,
+    a:hover {
+        color: black;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        padding-bottom: 2px;
+    }
+
+    p {
+        margin: 0px;
+        max-width: 450px;
+    }
+
+    .actu-img{
+        margin: 10px 0px 5px;
+        width: fit-content;
+        img{
+            @media (max-width: 830px) { 
+                width: 100%;
+                height: auto;
+                filter: grayscale(0)!important;
+            }
+        }
+    }
+
+    &.w-img:not(.header-body + .w-img){
+        margin-top: 30px;
+    }
+}
+@media (max-width: 768px) {
+    .actu-teaser {
+        margin-bottom: 10px;
+    } 
+} 

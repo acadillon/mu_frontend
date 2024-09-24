@@ -1,0 +1,47 @@
+// ------------------------------------------------------------
+// MAXIMENU
+// ------------------------------------------------------------
+
+#menu-btn {
+    font-size: 30px;
+    position: fixed;
+    bottom: 10px;
+    transition: opacity 0.3s ease;
+    margin-left: 20px;
+}
+
+#menu{
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.scrolled {
+    #menu-btn {
+        opacity: 0;
+        pointer-events: non;
+    }
+}
+
+.maximenu-wrapper {
+    padding-top: 50vh;
+    h2, .body-p{
+        margin: 0px 20px 5px;
+        @media (max-width: 830px) { 
+            margin: 0px 15px;
+        }
+        a{
+            text-decoration: underline;
+        }
+    }
+}
+
+.aa-wrapper{
+    margin: 20px 0px 30px;
+}
+.title-container{
+    margin-right: 100px;
+    @media (max-width: 650px) {
+        margin-right: 0px;
+    }
+}

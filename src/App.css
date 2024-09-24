@@ -1,0 +1,65 @@
+/* // ------------------------------------------------------------
+// APP
+// ------------------------------------------------------------ */
+
+#root {
+  margin: 0 auto;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  padding: 0px;
+  padding-bottom: 0px;
+}
+
+
+
+.accordeon-wrapper,
+.actus-wrapper {
+  /* border: 1px solid blue; */
+  width: 100%;
+}
+
+.answer-container{
+  /* border: 1px solid violet; */
+  overflow: hidden;
+  width: 100%;
+  transition: height 1s ease;
+}
+
+.answer-aa{
+  overflow: hidden;
+  width: 100%;
+  transition: max-height 1s ease;
+}
+
+.footer {
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer p{
+  font-family: 'Necto';
+  font-size: 12px;
+}
+
+@media (max-width: 830px) { 
+  .footer {
+    padding: 20px 15px 15px;
+    display: block;
+  }
+  .footer p{
+    margin: 0px;
+  }
+}
+
+a{
+  color: black !important;
+}

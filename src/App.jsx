@@ -33,7 +33,7 @@ const App = () => {
   useEffect(() => {
     // Fetch des about
     axios
-      .get("http://localhost:1337/api/abouts?populate=*")
+      .get("https://railwayapp-strapi-production-540e.up.railway.app/api/abouts?populate=*")
       .then(({ data }) => {
         setAbouts(data.data);
       })
@@ -76,22 +76,24 @@ const App = () => {
     <>
       
       <div>
-        {abouts.map(({ id, attributes }, index) => (
-          <div className="cover" key={id}>
-            <a href="#mu">
-              {attributes.Cover.data.attributes.mime.startsWith('video/') ? (
-                <div className={`video-wrap hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} onMouseEnter={() => mediaEnterEffect()} onMouseLeave={() => mediaLeaveEffect()}>
-                  <video id="home-video" playsInline muted loop >
-                    <source src={'http://localhost:1337' + attributes.Cover.data.attributes.url} type={attributes.Cover.data.attributes.mime} />
-                  </video>
-                </div>
-              ) : (
-                <figure className={`hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} onMouseEnter={() => mediaEnterEffect()} onMouseLeave={() => mediaLeaveEffect()}>
-                  <img src={'http://localhost:1337' + attributes.Cover.data.attributes.url} alt={attributes.Cover.data.attributes.name} />
-                </figure>
-              )}
-            </a>
-          </div>
+        {abouts.map((item) => (
+          item?.attributes?.Cover?.data ? (
+            <div className="cover" key={item.id}>
+              <a href="#mu">
+                {item.attributes.Cover.data.attributes.mime.startsWith('video/') ? (
+                  <div className={`video-wrap hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} onMouseEnter={() => mediaEnterEffect()} onMouseLeave={() => mediaLeaveEffect()}>
+                    <video id="home-video" playsInline muted loop >
+                      <source src={'https://railwayapp-strapi-production-540e.up.railway.app/' + item.attributes.Cover.data.attributes.url} type={item.attributes.Cover.data.attributes.mime} />
+                    </video>
+                  </div>
+                ) : (
+                  <figure className={`hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} onMouseEnter={() => mediaEnterEffect()} onMouseLeave={() => mediaLeaveEffect()}>
+                    <img src={'https://railwayapp-strapi-production-540e.up.railway.app/' + item.attributes.Cover.data.attributes.url} alt={item.attributes.Cover.data.attributes.name} />
+                  </figure>
+                )}
+              </a>
+            </div>
+          ) : null
         ))}
 
       </div>

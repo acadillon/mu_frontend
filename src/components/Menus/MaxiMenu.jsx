@@ -18,16 +18,31 @@ const MaxiMenu = ({ }) => {
 
     useEffect(() => {
         // Fetch des projets ordonnés à partir du menu
+        const API_URL = "https://railwayapp-strapi-production-540e.up.railway.app/api/works?populate=*";
+        
         axios
-            .get("http://localhost:1337/api/menu?populate[Works][populate]=Images")
+            .get(API_URL)
             .then(({ data }) => {
-                setMenulink(data.data.attributes.Works.data);
+                if (data && data.data) {
+                    setMenulink(data.data);
+                } else {
+                    setError(new Error("Format de données invalide"));
+                }
             })
-            .catch((error) => setError(error));
+            .catch((error) => {
+                console.error("Erreur lors de la récupération des données:", error);
+                setError(error);
+            });
     }, []);
 
     if (error) {
-        return <div>An error occured: {error.message}</div>;
+        return (
+            <div className="error-message">
+                Une erreur est survenue: {error.message}
+                <br />
+                Veuillez réessayer ultérieurement.
+            </div>
+        );
     }
     // ********************************************************************************
 
@@ -42,20 +57,19 @@ const MaxiMenu = ({ }) => {
                         <AaMenu />
                         <div>
                             {error && <p>Error fetching works: {error.message}</p>}
-                            {menulinks.map(({ id, attributes }, index) => (
+                            {menulinks.map((work, index) => (
                                 <Work
                                     key={index}
-                                    title={attributes.Title}
-                                    titleEN={attributes.TitleEN}
-                                    customHtml={attributes.CustomHtml}
-                                    poem={attributes.Poem}
-                                    poemEN={attributes.PoemEN}
-                                    body={attributes.Body}
-                                    bodyEN={attributes.BodyEN}
-                                    credit={attributes.Credit}
-                                    sliderImages={attributes.Images.data}
-                                    projectType={attributes.TypeDeProjet}
-                                    projectTypeEN={attributes.TypeDeProjetEN}
+                                    title={work.Title}
+                                    titleEN={work.TitleEN}
+                                    poem={work.Poem}
+                                    poemEN={work.PoemEN}
+                                    body={work.Body}
+                                    bodyEN={work.BodyEN}
+                                    credit={work.Credit}
+                                    sliderImages={work.Images}
+                                    projectType={work.TypeDeProjet}
+                                    projectTypeEN={work.TypeDeProjetEN}
                                 />
                             ))}
                         </div>

@@ -24,7 +24,7 @@ const AaMenu = ({ isActive, onClick }) => {
     useEffect(() => {
         // Fetch des about
         axios
-            .get("http://localhost:1337/api/abouts")
+            .get("https://railwayapp-strapi-production-540e.up.railway.app/api/abouts")
             .then(({ data }) => {
                 setAbouts(data.data);
             })
@@ -41,7 +41,7 @@ const AaMenu = ({ isActive, onClick }) => {
     useEffect(() => {
         // Fetch des actualites
         axios
-            .get("http://localhost:1337/api/actualites?populate=*")
+            .get("https://railwayapp-strapi-production-540e.up.railway.app/api/actualites?populate=*")
             .then(({ data }) => {
                 setActus(data.data);
             })

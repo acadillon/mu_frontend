@@ -81,7 +81,7 @@ const App = () => {
       {renderError()}
       <div className='cover-wrapper'>
         {abouts.map((item) => {
-          console.log("Cover direct:", item.Cover); // Pour debug
+          // console.log("Cover direct:", item.Cover); // Pour debug
           return (
             item?.Cover?.[0] ? (
               <div className="cover" key={item.id}>
@@ -98,7 +98,7 @@ const App = () => {
                     <figure className={`hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} 
                             onMouseEnter={() => mediaEnterEffect()} 
                             onMouseLeave={() => mediaLeaveEffect()}>
-                      <img src={item.Cover[0].url} alt={item.Cover[0].name} />
+                      <img src={item.Cover[0].formats.large.url} alt={item.Cover[0].name} />
                     </figure>
                   )}
                 </a>

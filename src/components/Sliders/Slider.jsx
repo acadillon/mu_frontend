@@ -18,7 +18,7 @@ const Slider = ({ images }) => {
 
   // *** HOVER EFFECT ***************************************************
   const mediaHoverEffect = (index) => {
-    console.log(index);
+    // console.log(index);
     const updatedHoverStates = Array(images.length).fill(false); // Réinitialiser tous les états à false
     updatedHoverStates[index] = true; // Définir l'état de l'élément actif à true
 
@@ -84,6 +84,13 @@ const Slider = ({ images }) => {
             enabled: true,
           }}
           slidesPerView={'auto'}
+          onClick={(swiper) => {
+            if (swiper.activeIndex === swiper.slides.length - 2) {
+              swiper.slideTo(0);
+            } else {
+              swiper.slideNext();
+            }
+          }}
           onInit={(swiper) => {
             // no arrow if less then 2 slides
             const totalSlides = swiper.slides.length;
@@ -122,7 +129,10 @@ const Slider = ({ images }) => {
                 </div>
               ) : (
                 <figure className={`hover-effect ${hoverStates[index] ? 'hover-on' : 'hover-off'}`}>
-                  <img src={image.url} alt={image.name} />
+                  <img 
+                    src={window.innerWidth <= 768 ? image.formats.small.url : image.formats.medium.url} 
+                    alt={image.name} 
+                  />
                   <figcaption className='small-body'>{image.caption}</figcaption>
                 </figure>
               )}

@@ -17,14 +17,15 @@ const MaxiMenu = ({ }) => {
 
 
     useEffect(() => {
-        // Fetch des projets ordonnés à partir du menu
-        const API_URL = "https://railwayapp-strapi-production-540e.up.railway.app/api/works?populate=*";
+        // Fetch du menu qui contient l'ordre des works
+        const MENU_API_URL = "https://railwayapp-strapi-production-540e.up.railway.app/api/menu?populate[works][populate]=*";
         
         axios
-            .get(API_URL)
+            .get(MENU_API_URL)
             .then(({ data }) => {
-                if (data && data.data) {
-                    setMenulink(data.data);
+                if (data && data.data && data.data.works) {
+                    // Utiliser directement les works du menu qui sont déjà dans l'ordre souhaité
+                    setMenulink(data.data.works);
                 } else {
                     setError(new Error("Format de données invalide"));
                 }

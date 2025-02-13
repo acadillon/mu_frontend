@@ -81,7 +81,6 @@ const App = () => {
       {renderError()}
       <div className='cover-wrapper'>
         {abouts.map((item) => {
-          // console.log("Cover direct:", item.Cover); // Pour debug
           return (
             item?.Cover?.[0] ? (
               <div className="cover" key={item.id}>

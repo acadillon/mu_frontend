@@ -41,9 +41,8 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
             </button>
 
             <div className={`answer-container ${isContentVisible ? 'active' : ''}`}>
-                {true && language === 'fr' && body && (
+                {true && language === 'fr' && (
                     <div className="accordeon-content">
-
                         {poem && poem.length > 0 && poem.map((paragraph, paragraphIndex) => (
                             <div className="body-p small-body" key={paragraphIndex}>
                                 {paragraph.children.map((child, index) => (
@@ -56,10 +55,9 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
                             </div>
                         ))}
 
-
                         {projectType && <div className="credit small-body">{projectType}</div>}
 
-                        {body.map((paragraph, paragraphIndex) => (
+                        {body && body.map((paragraph, paragraphIndex) => (
                             <div className="body-p" key={paragraphIndex}>
                                 {paragraph.children.map((child, index) => (
                                     child.code ? (
@@ -84,9 +82,8 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
                         )}
                     </div>
                 )}
-                {true && language === 'en' && bodyEN && (
+                {true && language === 'en' && (
                     <div className="accordeon-content">
-
                         {poemEN && poemEN.length > 0 && poemEN.map((paragraph, paragraphIndex) => (
                             <div className="body-p small-body" key={paragraphIndex}>
                                 {paragraph.children.map((child, index) => (
@@ -101,7 +98,7 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
 
                         {projectTypeEN && <div className="credit small-body">{projectTypeEN}</div>}
 
-                        {bodyEN.map((paragraph, paragraphIndex) => (
+                        {bodyEN && bodyEN.map((paragraph, paragraphIndex) => (
                             <div className="body-p small-body" key={paragraphIndex}>
                                 {paragraph.children.map((child, index) => (
                                     child.code ? (
@@ -123,11 +120,8 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
                         {sliderImages && (
                             <Slider images={sliderImages} />
                         )}
-
                     </div>
                 )}
-
-
             </div>
         </div>
     );

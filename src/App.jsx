@@ -31,18 +31,22 @@ const App = () => {
 
   // ** Datas about
   useEffect(() => {
-    // Fetch des about
     axios
-      .get("https://railwayapp-strapi-production-540e.up.railway.app/api/abouts?populate=*")
+      .get("https://railwayapp-strapi-production-540e.up.railway.app/api/about?populate=*")
       .then(({ data }) => {
-        setAbouts(data.data);
+        // Modification ici pour stocker les données correctement
+        setAbouts([data.data]);
       })
       .catch((error) => setError(error));
   }, []);
 
-  if (error) {
-    return <div>An error occured: {error.message}</div>;
-  }
+  // Déplacer cette vérification après tous les hooks
+  const renderError = () => {
+    if (error) {
+      return <div>An error occured: {error.message}</div>;
+    }
+    return null;
+  };
 
   // ********************************************************************************
 
@@ -74,28 +78,34 @@ const App = () => {
 
   return (
     <>
-      
-      <div>
-        {abouts.map((item) => (
-          item?.attributes?.Cover?.data ? (
-            <div className="cover" key={item.id}>
-              <a href="#mu">
-                {item.attributes.Cover.data.attributes.mime.startsWith('video/') ? (
-                  <div className={`video-wrap hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} onMouseEnter={() => mediaEnterEffect()} onMouseLeave={() => mediaLeaveEffect()}>
-                    <video id="home-video" playsInline muted loop >
-                      <source src={'https://railwayapp-strapi-production-540e.up.railway.app/' + item.attributes.Cover.data.attributes.url} type={item.attributes.Cover.data.attributes.mime} />
-                    </video>
-                  </div>
-                ) : (
-                  <figure className={`hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} onMouseEnter={() => mediaEnterEffect()} onMouseLeave={() => mediaLeaveEffect()}>
-                    <img src={'https://railwayapp-strapi-production-540e.up.railway.app/' + item.attributes.Cover.data.attributes.url} alt={item.attributes.Cover.data.attributes.name} />
-                  </figure>
-                )}
-              </a>
-            </div>
-          ) : null
-        ))}
-
+      {renderError()}
+      <div className='cover-wrapper'>
+        {abouts.map((item) => {
+          console.log("Cover direct:", item.Cover); // Pour debug
+          return (
+            item?.Cover?.[0] ? (
+              <div className="cover" key={item.id}>
+                <a href="#mu">
+                  {item.Cover[0].mime.startsWith('video/') ? (
+                    <div className={`video-wrap hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} 
+                         onMouseEnter={() => mediaEnterEffect()} 
+                         onMouseLeave={() => mediaLeaveEffect()}>
+                      <video id="home-video" playsInline muted loop >
+                        <source src={item.Cover[0].url} type={item.Cover[0].mime} />
+                      </video>
+                    </div>
+                  ) : (
+                    <figure className={`hover-effect ${hoverStates ? 'hover-on' : 'hover-off'}`} 
+                            onMouseEnter={() => mediaEnterEffect()} 
+                            onMouseLeave={() => mediaLeaveEffect()}>
+                      <img src={item.Cover[0].url} alt={item.Cover[0].name} />
+                    </figure>
+                  )}
+                </a>
+              </div>
+            ) : null
+          );
+        })}
       </div>
 
 

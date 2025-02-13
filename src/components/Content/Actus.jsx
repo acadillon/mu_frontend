@@ -37,12 +37,20 @@ const Actus = ({ isActive, onClick }) => {
     const groupByCategory = () => {
         const grouped = {};
         actus.forEach((actu) => {
-            const category = actu.attributes.category.data.attributes.Name;
-            if (grouped[category]) {
+            if (!actu.category) {
+                const category = 'Sans catégorie';
+                if (!grouped[category]) {
+                    grouped[category] = [];
+                }
                 grouped[category].push(actu);
-            } else {
-                grouped[category] = [actu];
+                return;
             }
+            
+            const category = actu.category.Name;
+            if (!grouped[category]) {
+                grouped[category] = [];
+            }
+            grouped[category].push(actu);
         });
         return grouped;
     };
@@ -59,20 +67,18 @@ const Actus = ({ isActive, onClick }) => {
             {Object.entries(groupedActus).map(([category, actus]) => (
                 <div key={category} className='actus-cat--wrapper'>
                     <h2 className='header-body'>{category}</h2>
-                    {actus.map(({ id, attributes }, index) => (
+                    {actus.map((actu) => (
                         <Actu
-                            key={index}
-                            title={attributes.Title}
-                            titleEN={attributes.TitleEN}
-                            body={attributes.Body}
-                            bodyEN={attributes.BodyEN}
-                            link={attributes.Link}
-                            linkText={attributes.LinkText}
-                            image={attributes.Image.data}
+                            key={actu.id}
+                            title={actu.Title}
+                            titleEN={actu.TitleEN}
+                            body={actu.Body}
+                            bodyEN={actu.BodyEN}
+                            link={actu.Link}
+                            linkText={actu.LinkText}
+                            image={actu.Image?.data}
                         />
-
                     ))}
-
                 </div>
             ))}
         </>

@@ -11,7 +11,7 @@ const AaMenu = ({ isActive, onClick }) => {
 
     // *** GET ABOUT ******************************************************************
     // ********************************************************************************
-    const [abouts, setAbouts] = useState([]);
+    const [about, setAbout] = useState(null);
     // const [actus, setActus] = useState([]);
     const [error, setError] = useState(null);
     const [aboutActive, setAboutActive] = useState(false);
@@ -24,9 +24,9 @@ const AaMenu = ({ isActive, onClick }) => {
     useEffect(() => {
         // Fetch des about
         axios
-            .get("https://railwayapp-strapi-production-540e.up.railway.app/api/abouts")
+            .get("https://railwayapp-strapi-production-540e.up.railway.app/api/about")
             .then(({ data }) => {
-                setAbouts(data.data);
+                setAbout(data.data);
             })
             .catch((error) => setError(error));
     }, []);
@@ -104,29 +104,26 @@ const AaMenu = ({ isActive, onClick }) => {
             </div>
             <div className={wrapperClasses}>
                 <div className={`${aboutClasses} ${aboutActive ? 'active' : ''}`}>
-                    {aboutActive && (
+                    {aboutActive && about && (
                         <div className="answer-aa">
-                            {abouts.map(({ id, attributes }, index) => (
-                                <div key={index} className='about-wrap'>
-                                    <div className="about-body">
-
-                                        {language === 'fr' && attributes.Body.map((paragraph, index) => (
-                                            <p key={index}>{paragraph.children[0].text}</p>
-                                        ))}
-                                        {language === 'en' && attributes.BodyEN.map((paragraph, index) => (
-                                            <p key={index}>{paragraph.children[0].text}</p>
-                                        ))}
-                                    </div>
-                                    <div className="about-bio small-body">
-                                        {language === 'fr' && attributes.Bio.map((paragraph, index) => (
-                                            <p key={index}>{paragraph.children[0].text}</p>
-                                        ))}
-                                        {language === 'en' && attributes.BioEN.map((paragraph, index) => (
-                                            <p key={index}>{paragraph.children[0].text}</p>
-                                        ))}
-                                    </div>
+                            <div className='about-wrap'>
+                                <div className="about-body">
+                                    {language === 'fr' && about.Body.map((paragraph, index) => (
+                                        <p key={index}>{paragraph.children[0].text}</p>
+                                    ))}
+                                    {language === 'en' && about.BodyEN.map((paragraph, index) => (
+                                        <p key={index}>{paragraph.children[0].text}</p>
+                                    ))}
                                 </div>
-                            ))}
+                                <div className="about-bio small-body">
+                                    {language === 'fr' && about.Bio.map((paragraph, index) => (
+                                        <p key={index}>{paragraph.children[0].text}</p>
+                                    ))}
+                                    {language === 'en' && about.BioEN.map((paragraph, index) => (
+                                        <p key={index}>{paragraph.children[0].text}</p>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>

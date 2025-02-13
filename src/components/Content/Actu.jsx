@@ -17,11 +17,13 @@ const Actu = ({ title, titleEN, body, bodyEN, link, linkText, image }) => {
     return (
 
         <div className={`actu-teaser`} onMouseEnter={() => actuEnterEffect()} onMouseLeave={() => actuLeaveEffect()}>
-            {image && image.attributes && (
-                <div className={`actu-img hover-effect ${image && image.attributes ? 'w-img' : ''} ${actuHoverStates === true ? 'hover-on' : (actuHoverStates === false ? 'hover-off' : '')}`}>
-                    <img src={'https://railwayapp-strapi-production-540e.up.railway.app/' + image.attributes.formats.small.url} alt={image.attributes.name} />
+            {image && (
+                <div className={`actu-img hover-effect ${image ? 'w-img' : ''} ${actuHoverStates === true ? 'hover-on' : (actuHoverStates === false ? 'hover-off' : '')}`}>
+                    <img
+                        src={image.formats?.small?.url || image.url}
+                        alt={image.name}
+                    />
                 </div>
-
             )}
 
             <div className="actu-ttl--wrap">
@@ -47,7 +49,7 @@ const Actu = ({ title, titleEN, body, bodyEN, link, linkText, image }) => {
                 </div>
             ))}
 
-            
+
 
 
         </div>
@@ -55,4 +57,3 @@ const Actu = ({ title, titleEN, body, bodyEN, link, linkText, image }) => {
 };
 
 export default Actu;
-

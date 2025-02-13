@@ -76,7 +76,7 @@ const Actus = ({ isActive, onClick }) => {
                             bodyEN={actu.BodyEN}
                             link={actu.Link}
                             linkText={actu.LinkText}
-                            image={actu.Image?.data}
+                            image={actu.Image}
                         />
                     ))}
                 </div>

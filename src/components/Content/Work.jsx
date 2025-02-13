@@ -12,7 +12,22 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
     const { language } = useContext(LanguageContext);
 
     // ::: Reaveal :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    const [isContentVisible, setIsContentVisible] = useState('false');
+    const [isContentVisible, setIsContentVisible] = useState(false);
+
+    useEffect(() => {
+        const handleStickyLinkClick = () => {
+            // Forcer la fermeture
+            setIsContentVisible(false);
+        };
+
+        const stickyLink = document.querySelector('.sticky-link');
+        stickyLink?.addEventListener('click', handleStickyLinkClick);
+
+        return () => {
+            stickyLink?.removeEventListener('click', handleStickyLinkClick);
+        };
+    }, []);
+
     const handleWorkClick = () => {
         setIsContentVisible(!isContentVisible);
     };
@@ -21,12 +36,12 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
 
     return (
         <div className={`accordeon-wrapper work`}>
-            <button className={`title-container ${!isContentVisible ? 'active' : ''}`} onClick={handleWorkClick} >
+            <button className={`title-container ${isContentVisible ? 'active' : ''}`} onClick={handleWorkClick} >
                 {language === 'fr' ? <h2 className='title-content'>{title}</h2> : <h2 className='title-content'>{titleEN}</h2>}
             </button>
 
-            <div className={`answer-container ${!isContentVisible ? 'active' : ''}`}>
-                {setIsContentVisible && language === 'fr' && body && (
+            <div className={`answer-container ${isContentVisible ? 'active' : ''}`}>
+                {true && language === 'fr' && body && (
                     <div className="accordeon-content">
 
                         {poem && poem.length > 0 && poem.map((paragraph, paragraphIndex) => (
@@ -69,7 +84,7 @@ const Work = ({ title, titleEN, poem, poemEN, body, bodyEN, credit, sliderImages
                         )}
                     </div>
                 )}
-                {setIsContentVisible && language === 'en' && bodyEN && (
+                {true && language === 'en' && bodyEN && (
                     <div className="accordeon-content">
 
                         {poemEN && poemEN.length > 0 && poemEN.map((paragraph, paragraphIndex) => (

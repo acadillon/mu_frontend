@@ -40,9 +40,11 @@
         margin: 10px 0px 5px;
         width: fit-content;
         img{
+            max-height: 300px;
             @media (max-width: 830px) { 
                 width: 100%;
                 height: auto;
+                max-height: unset;
                 filter: grayscale(0)!important;
             }
         }

@@ -31,12 +31,13 @@ const Header = () => {
           Production
           <div id="Diff">
             <span id="and">&</span>
-            <br></br>Diffusion des
+            <br></br>
+            {language === 'en' ? 'Distribution of ' : 'Diffusion des'}
           </div>
         </div>
       </div>
       <div className="sticky-object header-body" id="Art">
-        Arts chorégraphiques
+        {language === 'en' ? 'Choreographic Arts' : 'Arts chorégraphiques'}
       </div>
 
 

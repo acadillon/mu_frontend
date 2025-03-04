@@ -7,7 +7,6 @@
     padding-bottom: 10px;
     position: relative;
     z-index: 2;
-    min-height: 70vh;
 
     img,
     video {
@@ -149,4 +148,9 @@ header {
     }
 
 
+}
+@media (min-width: 830px) {
+    .cover {
+        min-height: 70vh;
+    }
 }

@@ -28,7 +28,6 @@
         color: black;
         text-decoration: underline;
         text-underline-offset: 3px;
-        padding-bottom: 2px;
     }
 
     p {
@@ -59,3 +58,7 @@
         margin-bottom: 10px;
     } 
 } 
+
+.arrow-ext{
+    transform: translateY(6px);
+}

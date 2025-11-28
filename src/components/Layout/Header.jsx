@@ -22,12 +22,16 @@ const Header = () => {
 
       <a href="#maximenu" className="sticky-link"></a>
       <div className="sticky-white-top"></div>
-      <div className="sticky-object header-body" id="Mu" ref={ref}>
-        Mû
+      <div className="sticky-object header-body" id="Marion" ref={ref}>
+        Marion Gassin,  
       </div>
+      {/* <div className="sticky-object header-body" id="Mu" ref={ref}>
+        Mû
+      </div> */}
       <div className="sticky-object header-body" id="Prodiff">
 
         <div>
+          Mû ~ 
           Production
           <div id="Diff">
             <span id="and">&</span>

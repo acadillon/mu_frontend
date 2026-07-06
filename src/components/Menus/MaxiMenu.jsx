@@ -69,6 +69,7 @@ const MaxiMenu = ({ }) => {
                                     bodyEN={work.BodyEN}
                                     credit={work.Credit}
                                     sliderImages={work.Images}
+                                    youtube={work.youtubeUrl}
                                     projectType={work.TypeDeProjet}
                                     projectTypeEN={work.TypeDeProjetEN}
                                 />

@@ -81,4 +81,9 @@
     margin-top: 15px;
     min-width: 200px;
 }
-
+.title-container:focus,
+.title-content:focus,
+.title-container:focus-visible,
+.title-content:focus-visible{
+    outline: none;
+}
